@@ -1,0 +1,18 @@
+<package format="2">
+  <name>gransac</name>
+  <version>0.0.0</version>
+  <description>GRANSAC: Multi-threaded generic RANSAC implemetation.</description>
+
+  <maintainer email="srinaths@umich.edu">Srinath Sridhar</maintainer>
+
+  <license>MIT</license>
+
+  <author email="srinaths@umich.edu">Srinath Sridhar</author>
+
+  <!-- <build_type>cmake</build_type> -->
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>

@@ -1,0 +1,38 @@
+# gransac-config.cmake - package configuration file
+
+#get_filename_component(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+#include(${SELF_DIR}/${CMAKE_BUILD_TYPE}/gransac.cmake)
+
+#set(GRANSAC_INCLUDE_DIR "@GRANSAC_INCLUDE_DIR@") 
+
+#set(GRANSAC_INCLUDE_DIRS "${GRANSAC_INCLUDE_DIR}")
+
+# Record the state of the CMake module path when this script was
+# called so that we can ensure that we leave it in the same state on
+# exit as it was on entry, but modify it locally.
+set(CALLERS_CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH})
+
+# Get the (current, i.e. installed) directory containing this file.
+get_filename_component(gransac_CURRENT_CONFIG_DIR
+  "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+# Reset CMake module path to the installation directory of this
+# script, thus we will use the FindPackage() scripts shipped with
+# wolf to find wolf' dependencies, even if the user has equivalently
+# named FindPackage() scripts in their project.
+set(CMAKE_MODULE_PATH ${gransac_CURRENT_CONFIG_DIR})
+
+# Build the absolute root install directory as a relative path
+# (determined when wolf was configured & built) from the current
+# install directory for this this file.  This allows for the install
+# tree to be relocated, after wolf was built, outside of CMake.
+get_filename_component(CURRENT_ROOT_INSTALL_DIR
+  ${gransac_CURRENT_CONFIG_DIR}/../../../
+  ABSOLUTE)
+
+if (NOT EXISTS ${CURRENT_ROOT_INSTALL_DIR})
+  
+endif (NOT EXISTS ${CURRENT_ROOT_INSTALL_DIR})
+
+# Set the include directories for gransac (itself).
+set(gransac_INCLUDE_DIR "${CURRENT_ROOT_INSTALL_DIR}/include")
